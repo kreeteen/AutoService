@@ -9,8 +9,12 @@ public class Car {
     private String model;
     private LocalDate manufactureDate;
 
-    public Car(Long carId, Long clientId, String licensePlate, String brand,
-               String model, LocalDate manufactureDate) {
+    public Car(Long carId,
+               Long clientId,
+               String licensePlate,
+               String brand,
+               String model,
+               LocalDate manufactureDate) {
         this.carId = carId;
         this.clientId = clientId;
         this.licensePlate = licensePlate;

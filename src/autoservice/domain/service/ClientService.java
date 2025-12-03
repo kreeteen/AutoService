@@ -13,7 +13,10 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    public Client createClient(String firstName, String lastName, String middleName, String phone) {
+    public Client createClient(String firstName,
+                               String lastName,
+                               String middleName,
+                               String phone) {
         Client client = new Client(null, firstName, lastName, middleName, phone);
         return clientRepository.save(client);
     }

@@ -7,7 +7,11 @@ public class Client {
     private String middleName;
     private String phone;
 
-    public Client(Long clientId, String firstName, String lastName, String middleName, String phone) {
+    public Client(Long clientId,
+                  String firstName,
+                  String lastName,
+                  String middleName,
+                  String phone) {
         this.clientId = clientId;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -1,6 +1,7 @@
 package autoservice.domain.inmemory;
 
 import autoservice.domain.model.ServiceOrder;
+import autoservice.domain.repository.ServiceOrderRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
-public class InMemoryServiceOrderRepository implements autoservice.domain.repository.ServiceOrderRepository {
+public class InMemoryServiceOrderRepository implements ServiceOrderRepository {
     private final Map<Long, ServiceOrder> orders = new ConcurrentHashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
 

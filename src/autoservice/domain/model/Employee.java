@@ -15,9 +15,18 @@ public class Employee {
     private String workSchedule;
     private Double seniorityBonus;
 
-    public Employee(Long employeeId, String firstName, String lastName, String middleName,
-                    String address, LocalDate dateOfBirth, String phoneNumber, String position,
-                    Double salary, Integer experience, String workSchedule, Double seniorityBonus) {
+    public Employee(Long employeeId,
+                    String firstName,
+                    String lastName,
+                    String middleName,
+                    String address,
+                    LocalDate dateOfBirth,
+                    String phoneNumber,
+                    String position,
+                    Double salary,
+                    Integer experience,
+                    String workSchedule,
+                    Double seniorityBonus) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;

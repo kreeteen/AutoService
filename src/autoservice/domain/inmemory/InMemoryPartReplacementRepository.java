@@ -1,6 +1,7 @@
 package autoservice.domain.inmemory;
 
 import autoservice.domain.model.PartReplacement;
+import autoservice.domain.repository.PartReplacementRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
-public class InMemoryPartReplacementRepository implements autoservice.domain.repository.PartReplacementRepository {
+public class InMemoryPartReplacementRepository implements PartReplacementRepository {
     private final Map<Long, PartReplacement> replacements = new ConcurrentHashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
 

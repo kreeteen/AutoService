@@ -17,16 +17,7 @@ public class CarService {
 
     public Car createCar(Long clientId, String licensePlate, String brand,
                          String model, LocalDate manufactureDate) {
-        // Валидация номерного знака
-        if (!LicensePlateValidator.isValidRussianLicensePlate(licensePlate)) {
-            throw new IllegalArgumentException("Неверный формат номерного знака: " + licensePlate);
-        }
-
-        // Проверка уникальности номерного знака
-        String formattedPlate = LicensePlateValidator.formatLicensePlate(licensePlate);
-        if (isLicensePlateExists(formattedPlate)) {
-            throw new IllegalArgumentException("Автомобиль с номерным знаком " + formattedPlate + " уже существует");
-        }
+        String formattedPlate = validationLicensePlate(licensePlate);
 
         Car car = new Car(null, clientId, formattedPlate, brand, model, manufactureDate);
         return carRepository.save(car);
@@ -50,16 +41,7 @@ public class CarService {
     }
 
     public boolean updateCarLicensePlate(Long id, String newLicensePlate) {
-        // Валидация нового номерного знака
-        if (!LicensePlateValidator.isValidRussianLicensePlate(newLicensePlate)) {
-            throw new IllegalArgumentException("Неверный формат номерного знака: " + newLicensePlate);
-        }
-
-        // Проверка уникальности нового номерного знака
-        String formattedPlate = LicensePlateValidator.formatLicensePlate(newLicensePlate);
-        if (isLicensePlateExists(formattedPlate)) {
-            throw new IllegalArgumentException("Автомобиль с номерным знаком " + formattedPlate + " уже существует");
-        }
+        String formattedPlate = validationLicensePlate(newLicensePlate);
 
         Optional<Car> car = carRepository.findById(id);
         if (car.isPresent()) {
@@ -82,5 +64,19 @@ public class CarService {
     private boolean isLicensePlateExists(String licensePlate) {
         List<Car> carsWithSamePlate = carRepository.findByLicensePlate(licensePlate);
         return !carsWithSamePlate.isEmpty();
+    }
+
+    private String validationLicensePlate(String licensePlate) {
+        // Validation of new LicensePlate
+        if (!LicensePlateValidator.isValidRussianLicensePlate(licensePlate)) {
+            throw new IllegalArgumentException("Неверный формат номерного знака: " + licensePlate);
+        }
+
+        // Checking of new unique LicensePlate
+        String formattedPlate = LicensePlateValidator.formatLicensePlate(licensePlate);
+        if (isLicensePlateExists(formattedPlate)) {
+            throw new IllegalArgumentException("Автомобиль с номерным знаком " + formattedPlate + " уже существует");
+        }
+        return formattedPlate;
     }
 }

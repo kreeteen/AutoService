@@ -1,6 +1,7 @@
 package autoservice.domain.inmemory;
 
 import autoservice.domain.model.Client;
+import autoservice.domain.repository.ClientRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class InMemoryClientRepository implements autoservice.domain.repository.ClientRepository {
+public class InMemoryClientRepository implements ClientRepository {
     private final Map<Long, Client> clients = new ConcurrentHashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
 

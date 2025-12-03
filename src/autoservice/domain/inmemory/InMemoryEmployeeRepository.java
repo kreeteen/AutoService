@@ -1,6 +1,7 @@
 package autoservice.domain.inmemory;
 
 import autoservice.domain.model.Employee;
+import autoservice.domain.repository.EmployeeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
-public class InMemoryEmployeeRepository implements autoservice.domain.repository.EmployeeRepository {
+public class InMemoryEmployeeRepository implements EmployeeRepository {
     private final Map<Long, Employee> employees = new ConcurrentHashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
 

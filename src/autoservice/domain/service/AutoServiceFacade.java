@@ -14,9 +14,12 @@ public class AutoServiceFacade {
     private final OrderEmployeeService orderEmployeeService;
     private final PartReplacementService partReplacementService;
 
-    public AutoServiceFacade(ClientService clientService, EmployeeService employeeService,
-                             CarService carService, ServiceOrderService orderService,
-                             OrderEmployeeService orderEmployeeService, PartReplacementService partReplacementService) {
+    public AutoServiceFacade(ClientService clientService,
+                             EmployeeService employeeService,
+                             CarService carService,
+                             ServiceOrderService orderService,
+                             OrderEmployeeService orderEmployeeService,
+                             PartReplacementService partReplacementService) {
         this.clientService = clientService;
         this.employeeService = employeeService;
         this.carService = carService;

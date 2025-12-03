@@ -1,6 +1,7 @@
 package autoservice.domain.inmemory;
 
 import autoservice.domain.model.OrderEmployee;
+import autoservice.domain.repository.OrderEmployeeRepository;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
-public class InMemoryOrderEmployeeRepository implements autoservice.domain.repository.OrderEmployeeRepository {
+public class InMemoryOrderEmployeeRepository implements OrderEmployeeRepository {
     private final List<OrderEmployee> orderEmployees = Collections.synchronizedList(new ArrayList<>());
     private final AtomicLong idCounter = new AtomicLong(1);
 

@@ -1,6 +1,7 @@
 package autoservice.domain.inmemory;
 
 import autoservice.domain.model.Car;
+import autoservice.domain.repository.CarRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 
-public class InMemoryCarRepository implements autoservice.domain.repository.CarRepository {
+public class InMemoryCarRepository implements CarRepository {
     private final Map<Long, Car> cars = new ConcurrentHashMap<>();
     private final AtomicLong idCounter = new AtomicLong(1);
 

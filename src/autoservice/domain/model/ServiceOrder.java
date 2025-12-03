@@ -10,8 +10,13 @@ public class ServiceOrder {
     private LocalDate completionDate;
     private String status;
 
-    public ServiceOrder(Long orderId, Long carId, LocalDate createdDate, String description,
-                        String repairDescription, LocalDate completionDate, String status) {
+    public ServiceOrder(Long orderId,
+                        Long carId,
+                        LocalDate createdDate,
+                        String description,
+                        String repairDescription,
+                        LocalDate completionDate,
+                        String status) {
         this.orderId = orderId;
         this.carId = carId;
         this.createdDate = createdDate;

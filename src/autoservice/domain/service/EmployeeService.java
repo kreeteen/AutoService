@@ -14,10 +14,17 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public Employee createEmployee(String firstName, String lastName, String middleName,
-                                   String address, LocalDate dateOfBirth, String phoneNumber,
-                                   String position, Double salary, Integer experience,
-                                   String workSchedule, Double seniorityBonus) {
+    public Employee createEmployee(String firstName,
+                                   String lastName,
+                                   String middleName,
+                                   String address,
+                                   LocalDate dateOfBirth,
+                                   String phoneNumber,
+                                   String position,
+                                   Double salary,
+                                   Integer experience,
+                                   String workSchedule,
+                                   Double seniorityBonus) {
         Employee employee = new Employee(null, firstName, lastName, middleName, address,
                 dateOfBirth, phoneNumber, position, salary,
                 experience, workSchedule, seniorityBonus);

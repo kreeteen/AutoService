@@ -7,8 +7,11 @@ public class PartReplacement {
     private String partNumber;
     private Integer quantity;
 
-    public PartReplacement(Long replacementId, Long orderId, String partName,
-                           String partNumber, Integer quantity) {
+    public PartReplacement(Long replacementId,
+                           Long orderId,
+                           String partName,
+                           String partNumber,
+                           Integer quantity) {
         this.replacementId = replacementId;
         this.orderId = orderId;
         this.partName = partName;
