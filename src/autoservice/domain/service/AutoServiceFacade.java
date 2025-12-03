@@ -164,7 +164,7 @@ public class AutoServiceFacade {
     }
 
     // PartReplacement operations
-    public PartReplacement addPartReplacement(Long orderId, String partName, String partNumber, Integer quantity) {
+    public PartReplacement addPartReplacement(Long orderId, String partName, String partNumber, int quantity) {
         return partReplacementService.addPartReplacement(orderId, partName, partNumber, quantity);
     }
 

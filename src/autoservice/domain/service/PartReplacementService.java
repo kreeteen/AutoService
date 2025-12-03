@@ -15,7 +15,7 @@ public class PartReplacementService {
     public PartReplacement addPartReplacement(Long orderId,
                                               String partName,
                                               String partNumber,
-                                              Integer quantity) {
+                                              int quantity) {
         PartReplacement replacement = new PartReplacement(null, orderId, partName, partNumber, quantity);
         return partReplacementRepository.save(replacement);
     }

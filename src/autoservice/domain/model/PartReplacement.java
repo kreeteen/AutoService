@@ -11,12 +11,12 @@ public class PartReplacement {
                            Long orderId,
                            String partName,
                            String partNumber,
-                           Integer quantity) {
+                           int quantity) {
         this.replacementId = replacementId;
         this.orderId = orderId;
         this.partName = partName;
         this.partNumber = partNumber;
-        this.quantity = quantity;
+        this.quantity = (Integer) quantity;
     }
 
     public Long getReplacementId() { return replacementId; }

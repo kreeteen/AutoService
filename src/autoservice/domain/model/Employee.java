@@ -27,7 +27,7 @@ public class Employee {
                     Integer experience,
                     String workSchedule,
                     Double seniorityBonus) {
-        this.employeeId = employeeId;
+        this.employeeId = (Long) employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
@@ -57,12 +57,12 @@ public class Employee {
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
     public String getPosition() { return position; }
     public void setPosition(String position) { this.position = position; }
-    public Double getSalary() { return salary; }
+    public Double getSalary() { return (Double) salary; }
     public void setSalary(Double salary) { this.salary = salary; }
-    public Integer getExperience() { return experience; }
+    public Integer getExperience() { return (Integer) experience; }
     public void setExperience(Integer experience) { this.experience = experience; }
     public String getWorkSchedule() { return workSchedule; }
     public void setWorkSchedule(String workSchedule) { this.workSchedule = workSchedule; }
-    public Double getSeniorityBonus() { return seniorityBonus; }
+    public double getSeniorityBonus() { return seniorityBonus; }
     public void setSeniorityBonus(Double seniorityBonus) { this.seniorityBonus = seniorityBonus; }
 }
