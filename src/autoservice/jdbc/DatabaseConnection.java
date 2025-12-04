@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DatabaseConnection {
-    private static final String DB_URL = "autoservice.jdbc:postgresql://localhost:5432/autoservice";
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "123";
 

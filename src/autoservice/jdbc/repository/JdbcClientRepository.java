@@ -14,10 +14,8 @@ public class JdbcClientRepository implements ClientRepository {
     public Client save(Client client) {
         String sql;
         if (client.getClientId() == null) {
-            // INSERT
             sql = "INSERT INTO clients (first_name, last_name, middle_name, phone) VALUES (?, ?, ?, ?) RETURNING client_id";
         } else {
-            // UPDATE
             sql = "UPDATE clients SET first_name = ?, last_name = ?, middle_name = ?, phone = ? WHERE client_id = ?";
         }
 

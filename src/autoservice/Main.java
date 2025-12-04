@@ -8,6 +8,7 @@ import autoservice.jdbc.DatabaseConnection;
 import autoservice.jdbc.RepositoryFactory;
 import autoservice.jdbc.RepositoryFactory.StorageType;
 
+import java.sql.Connection;
 import java.time.LocalDate;
 
 public class Main {
