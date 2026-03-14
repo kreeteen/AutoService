@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Основная информация о проекте -->
+    <groupId>autoservice</groupId>
+    <artifactId>autoservice-web</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>  <!-- Важно: тип WAR для веб-приложения -->
+
+    <properties>
+        <!-- Версия Java -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Версии зависимостей -->
+        <servlet.api.version>4.0.1</servlet.api.version>
+        <jstl.version>1.2</jstl.version>
+        <jsp.api.version>2.3.3</jsp.api.version>
+    </properties>
+
+    <!-- Зависимости проекта -->
+    <dependencies>
+        <!-- JSTL для JSP -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.api.version}</version>
+            <scope>provided</scope>  <!-- provided = Tomcat уже имеет эту библиотеку -->
+        </dependency>
+
+        <!-- JSP API -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>${jsp.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Если есть база данных -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.6.0</version>
+        </dependency>
+
+        <!-- Для работы с логами (опционально) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.9</version>
+        </dependency>
+    </dependencies>
+
+    <!-- Сборка проекта -->
+    <build>
+        <!-- Имя итогового WAR-файла -->
+        <finalName>autoservice</finalName>
+
+        <!-- Плагины -->
+        <plugins>
+            <!-- Компилятор Java -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Создание WAR-файла -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <!-- Где находятся веб-ресурсы -->
+                    <webResources>
+                        <resource>
+                            <directory>src/main/main.webapp</directory>
+                        </resource>
+                    </webResources>
+                    <!-- Чтобы Maven не ругался на отсутствие web.xml -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <!-- Запуск Tomcat (выберите один вариант) -->
+
+            <!-- Вариант 1: Tomcat 7 Maven Plugin (самый простой) -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8080</port>
+                    <path>/</path>  <!-- Корневой путь проще -->
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <server>tomcat</server>
+                    <update>true</update>
+                    <systemProperties>
+                        <file.encoding>UTF-8</file.encoding>
+                        <sun.jnu.encoding>UTF-8</sun.jnu.encoding>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+        <!-- Фильтры ресурсов (для правильной кодировки) -->
+        <resources>
+            <!-- Если у вас есть ресурсы в main.webapp -->
+            <resource>
+                <directory>src/main/webapp</directory>
+                <targetPath>.</targetPath>
+                <includes>
+                    <include>**/*.jsp</include>
+                    <include>**/*.html</include>
+                    <include>**/*.css</include>
+                    <include>**/*.js</include>
+                    <include>WEB-INF/**</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>
